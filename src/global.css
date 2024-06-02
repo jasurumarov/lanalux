@@ -3,10 +3,6 @@
   src: url("./fonts/PARKANA_.TTF");
 }
 @font-face {
-  font-family: "Vanta";
+  font-family: "Vanta", sans-serif;
   src: url("./fonts/VANTAB.ttf");
-}
-
-h4 {
-  font-family: Vanta !important;
 }
