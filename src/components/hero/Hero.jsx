@@ -6,7 +6,9 @@ const Hero = () => {
     <section className="hero-section">
       <div className="container">
         <div className="hero-section__content">
-          <img src={bannerImg} alt="Banner image" />
+          <div className="hero__img">
+            <img src={bannerImg} alt="Banner image" />
+          </div>
         </div>
       </div>
     </section>
