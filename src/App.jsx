@@ -1,28 +1,25 @@
-import { Route, Routes } from 'react-router-dom'
-import './scss/style.scss'
+import { Route, Routes } from "react-router-dom";
+import "./scss/style.scss";
 
 // Pages
-import Home from './pages/home/Home'
+import Home from "./pages/home/Home";
 
 // Components
-import Header from './components/header/Header'
-import Footer from './components/footer/Footer'
-import NotFound from './components/notFound/NotFound'
+import Header from "./components/header/Header";
+import Footer from "./components/footer/Footer";
+import NotFound from "./components/notFound/NotFound";
 
 function App() {
   return (
     <>
-      <Header/>
-
+      <Header />
       <Routes>
-        <Route path='/' element={<Home/>}/>
-
-        <Route path="*" element={<NotFound/>}/>
+        <Route path="/" element={<Home />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
-
-      <Footer/>
+      <Footer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

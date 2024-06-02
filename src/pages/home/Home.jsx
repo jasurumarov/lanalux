@@ -1,14 +1,16 @@
-import React from 'react'
+import React from "react";
 
 // Components
-import Hero from '../../components/hero/Hero'
+import Hero from "../../components/hero/Hero";
+import Ads from "../../components/ads/Ads";
 
 const Home = () => {
   return (
-    <main className='home-page'>
-        <Hero/>
+    <main className="home-page">
+      <Hero />
+      <Ads />
     </main>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
