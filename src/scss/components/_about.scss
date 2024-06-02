@@ -1,0 +1,61 @@
+
+.about_name {
+    font-size: 41px;
+    font-weight: 400;
+    line-height: 51px;
+    text-align: left;
+    max-width: 512px;
+    color: #313131;
+}
+
+.bg_color {
+    background: #F2ECE4;
+    width: 100%;
+    height: 206px;
+    margin: 30px 0 44px 0;
+}
+
+.about_pars {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    &:first-child {
+
+    }
+}
+
+.about_pars p {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 33px;
+    letter-spacing: 0.05em;
+    color: black;
+    max-width: 1150px;
+}
+
+.about_images {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 53px 0 62px;
+    img {
+        width: 100%;
+    }
+}
+
+.line {
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 600px){
+    .about_images img:nth-child(1){
+        display: none;
+    }   
+    .about_images img:nth-child(3){
+        display: none;
+    } 
+    .about_images {
+        grid-template-columns: 1fr;
+    } 
+      
+}
