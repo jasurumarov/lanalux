@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
-import Sheep from "../../assets/images/sheep.svg";
-import Lod from "../../assets/images/lod.svg";
-import Camel from "../../assets/images/camel.svg";
+import Sheep from "../../assets/images/sheep-1.jpg";
+import Goat from "../../assets/images/goat.jpg";
+import Camel from "../../assets/images/camel-1.jpg";
+import Liama from "../../assets/images/liama.jfif";
 import { useParams } from "react-router-dom";
 
 const AboutContent = () => {
@@ -52,13 +53,13 @@ const AboutContent = () => {
                   return <img key={inx} src={Sheep} alt="Img" />;
                 }
                 if (id === "2") {
-                  return <img key={inx} src={Sheep} alt="Img" />;
+                  return <img key={inx} src={Liama} alt="Img" />;
                 }
                 if (id === "3") {
-                  return <img key={inx} src={Sheep} alt="Img" />;
+                  return <img key={inx} src={Goat} alt="Img" />;
                 }
                 if (id === "4") {
-                  return <img key={inx} src={Sheep} alt="Img" />;
+                  return <img key={inx} src={Camel} alt="Img" />;
                 }
               })}
             </div>

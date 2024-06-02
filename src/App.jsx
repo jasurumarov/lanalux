@@ -9,6 +9,7 @@ import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import NotFound from "./components/notFound/NotFound";
 import About from "./pages/about/About";
+import Card from "./components/card/Card";
 import "./global.css";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/about/:id" element={<About />} />
+        <Route path="/card" element={<Card />} />
       </Routes>
       <Footer />
     </>
