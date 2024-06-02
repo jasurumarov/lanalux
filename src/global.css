@@ -1,0 +1,12 @@
+@font-face {
+  font-family: "Park Avenue";
+  src: url("./fonts/PARKANA_.TTF");
+}
+@font-face {
+  font-family: "Vanta";
+  src: url("./fonts/VANTAB.ttf");
+}
+
+h4 {
+  font-family: Vanta !important;
+}
