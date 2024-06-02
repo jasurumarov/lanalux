@@ -1,5 +1,5 @@
 import React from 'react'
-import { HiOutlineMenuAlt2, HiOutlineShoppingBag } from "react-icons/hi";
+import { HiChevronDown, HiOutlineMenuAlt2, HiOutlineShoppingBag } from "react-icons/hi";
 import { Link } from 'react-router-dom';
 
 // Images
@@ -13,17 +13,17 @@ const Header = () => {
     <header>
       <div className="container">
         <nav className="header__content">
-          <img src={SiteLogo} alt="site logo" />
+          <Link className='site-logo' to={'/'}><img src={SiteLogo} alt="site logo" /></Link>
           <div className='header__content-category'>
             <button >
               <HiOutlineMenuAlt2 />
-              каталог
+              <p>каталог</p>
             </button>
           </div>
-          <h3>321</h3>
+          <h3>Одежда и постель из натуральной шерсти</h3>
           <div className="header__content-contact">
             <p>+7 (495) 508-76-45</p>
-            <Link>заказать звонок</Link>
+            <Link to={'tel: +7 495 508-76-45'}>заказать звонок</Link>
           </div>
           <div className="header__content-btns">
             <button className='header__content-search'>
@@ -36,6 +36,7 @@ const Header = () => {
             <button className='header__content-lang'>
               RU
               <img src={RuIcon} alt="russia flag" />
+              <HiChevronDown />
             </button>
           </div>
         </nav>
