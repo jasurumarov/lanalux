@@ -20,6 +20,7 @@ const WoolType = () => {
   return (
     <section className="wool-type-section">
       <div className="container">
+        <h3 className="wool__type__title">Виды шерсти</h3>
         <div className="wool-type__wrapper">{card}</div>
       </div>
     </section>

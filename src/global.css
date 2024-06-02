@@ -6,3 +6,7 @@
   font-family: "Vanta", sans-serif;
   src: url("./fonts/VANTAB.ttf");
 }
+
+body {
+  background: #f9f7f4;
+}
