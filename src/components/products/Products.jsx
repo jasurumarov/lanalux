@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useGetProductsQuery } from "../../context/api/productsApi";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../context/slice/cartSlice";
 
 // Images
 import { MdOutlineCurrencyRuble } from "react-icons/md";
@@ -19,6 +21,7 @@ const Products = () => {
   const [seeMore, setSeeMore] = useState(1);
   const [sortAsc, setSortAsc] = useState(true);
   let { data, isLoading } = useGetProductsQuery(`limit=${8 * seeMore}`);
+  const dispatch = useDispatch();
 
   let numOfLoadingItem = Array(8).fill("");
   let loadingItem = numOfLoadingItem.map((_, inx) => (
@@ -73,7 +76,10 @@ const Products = () => {
             <FaPlus />
           </button>
         </div>
-        <button className="products__card-cart__content">
+        <button
+          onClick={() => dispatch(addToCart(el))}
+          className="products__card-cart__content"
+        >
           <IoCartOutline />
         </button>
       </div>

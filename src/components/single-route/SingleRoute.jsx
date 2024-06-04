@@ -102,7 +102,7 @@ const SingleRoute = ({ data }) => {
               </div>
               <div className="pro__price">
                 <h3>{data?.price} $</h3>
-                {cart?.some((el) => el.id == data.id) ? (
+                {cart?.some((el) => el.id == data?.id) ? (
                   <div className="cart__count">
                     <button
                       disabled={product?.quantity <= 1}
@@ -122,7 +122,7 @@ const SingleRoute = ({ data }) => {
                   <></>
                 )}
 
-                {cart?.some((el) => el.id === data.id) ? (
+                {cart?.some((el) => el.id === data?.id) ? (
                   <button
                     onClick={() => dispatch(removeItemFromCart(data))}
                     className="cart__btn"
