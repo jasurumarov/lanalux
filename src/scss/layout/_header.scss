@@ -327,6 +327,22 @@ header {
     }
 }
 
+@media (max-width: 774px) {
+    header {
+        nav {
+            position: relative; 
+            .header__content-btns {
+                .header__content-search.active {
+                    border-radius: 50% !important;
+                }
+                input {
+                    display: none !important;
+                }
+            }
+        }
+    }
+}
+
 @media (max-width: 468px) {
     header {
         nav {

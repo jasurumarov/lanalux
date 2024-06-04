@@ -76,7 +76,7 @@ const Header = () => {
             <Link to={'tel: +7 495 508-76-45'}>заказать звонок</Link>
           </div>
           <div className="header__content-btns">
-            <div className="header__search">
+            <div className={`header__search ${search ? 'active' : ''}`}>
               <button onClick={() => setSearch(p => !p)} className={`header__content-search ${search ? 'active' : ''} ${value ? 'value' : ''}`}>
                 <GoSearch />
               </button>
