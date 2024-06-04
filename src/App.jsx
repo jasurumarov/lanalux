@@ -13,14 +13,22 @@ import NotFound from "./components/notFound/NotFound";
 import About from "./pages/about/About";
 import Card from "./components/card/Card";
 import "./global.css";
+import Information from "./components/information";
+import Delivery from "./components/information/delivery";
+import Obmen from "./components/information/obmen";
 
 function App() {
   return (
     <>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/category" element={<Category />} />
+        <Route path="/" element={<Home />}>
+          <Route path="information" element={<Information />}>
+            <Route path="delivery" element={<Delivery />} />
+            <Route path="obmen" element={<Obmen />} />
+          </Route>
+        </Route>
+        <Route path="/category/:path" element={<Category />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/about/:id" element={<About />} />
         <Route path="/cart" element={<Card />} />
