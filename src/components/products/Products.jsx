@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useGetProductsQuery } from '../../context/api/productsApi'
+import { addToCart } from '../../context/slice/cartSlice'
 
 // Images
 import { MdOutlineCurrencyRuble } from 'react-icons/md'
@@ -7,11 +8,14 @@ import { BiRuble } from 'react-icons/bi'
 import { FaMinus, FaPlus } from 'react-icons/fa'
 import { IoCartOutline } from 'react-icons/io5'
 import { LiaSortAmountDownAltSolid, LiaSortAmountDownSolid } from 'react-icons/lia'
+import { useDispatch } from 'react-redux'
 
 const Products = () => {
     const [seeMore, setSeeMore] = useState(1)
     const [sortAsc, setSortAsc] = useState(true);
     let { data, isLoading } = useGetProductsQuery(`limit=${8 * seeMore}`)
+    
+    const dispatch = useDispatch()
 
     let numOfLoadingItem = Array(8).fill('')
     let loadingItem = numOfLoadingItem.map((_, inx) => (
@@ -48,7 +52,7 @@ const Products = () => {
                     <p>|</p>
                     <button><FaPlus /></button>
                 </div>
-                <button className='products__card-cart__content'><IoCartOutline /></button>
+                <button onClick={() => dispatch(addToCart(el))} className='products__card-cart__content'><IoCartOutline /></button>
             </div>
         </div>
     ))
@@ -57,7 +61,7 @@ const Products = () => {
             <div className="container">
                 <div className="category__filters">
                     <div className="category__filters-top">
-                        <h2>фильтр по параметрам</h2>
+                        <h2>фильCartтр по параметрам</h2>
                         <div className='category__filters-top-filter'>
                             <div className="category__filters-top-filter__seemore">
                                 <p>Показать:</p>
