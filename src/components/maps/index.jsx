@@ -5,8 +5,13 @@ import { MdOutlinePhone } from "react-icons/md";
 import { MdOutlineMarkEmailRead } from "react-icons/md";
 import { MdOutlineLocationOn } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const Maps = () => {
+  const { pathname } = useLocation();
+  if (pathname.includes("cart")) {
+    return <></>;
+  }
   return (
     <div className="maps-section">
       <div className="ads">
