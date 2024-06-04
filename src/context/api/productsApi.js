@@ -17,6 +17,13 @@ export const productApi = api.injectEndpoints({
       }),
       providesTags: ["Products"],
     }),
+    getCategoryItem: build.query({
+      // 'https://dummyjson.com/products/category/smartphones'
+      query: (path) => ({
+        url: `/products/category/${path}`,
+      }),
+      providesTags: ["Products"],
+    }),
     // Delete
     deleteProducts: build.mutation({
       query: (id) => ({
@@ -52,4 +59,5 @@ export const {
   usePostProductsMutation,
   useUpdateProductMutation,
   useGetCategoryProductsQuery,
+  useGetCategoryItemQuery,
 } = productApi;

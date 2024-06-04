@@ -25,6 +25,54 @@ const SingleRoute = () => {
               </div>
             </div>
             <div className="product__about">
+              <div className="category__filters-body">
+                <div className="category__filters-body__filter">
+                  <h4>Выберите размер</h4>
+                  <article>
+                    <button disabled>
+                      <input disabled type="checkbox" />
+                      <p>М(46)</p>
+                    </button>
+                    <button disabled>
+                      <input disabled type="checkbox" />
+                      <p>L(48)</p>
+                    </button>
+                    <button>
+                      <input disabled defaultChecked type="checkbox" />
+                      <p>XL(50)</p>
+                    </button>
+                    <button disabled>
+                      <input disabled type="checkbox" />
+                      <p>XXL(52)</p>
+                    </button>
+                    <button disabled>
+                      <input disabled type="checkbox" />
+                      <p>XXXL(54)</p>
+                    </button>
+                  </article>
+                </div>
+                <div className="category__filters-body__filter category__filters-body__byRost">
+                  <h4>Выберите РОСТ</h4>
+                  <article>
+                    <button disabled>
+                      <input disabled type="checkbox" />
+                      <p>170</p>
+                    </button>
+                    <button disabled>
+                      <input disabled type="checkbox" />
+                      <p>176</p>
+                    </button>
+                    <button>
+                      <input disabled defaultChecked type="checkbox" />
+                      <p>182</p>
+                    </button>
+                    <button disabled>
+                      <input disabled type="checkbox" />
+                      <p>188</p>
+                    </button>
+                  </article>
+                </div>
+              </div>
               <div className="rows">
                 <h4>Материал:</h4>
                 <p>
