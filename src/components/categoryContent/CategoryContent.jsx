@@ -15,8 +15,12 @@ import { FaMinus, FaPlus } from "react-icons/fa";
 import { BiRuble } from "react-icons/bi";
 import Products from "../products/Products";
 import { useNavigate } from "react-router-dom";
+import { addToCart } from "../../context/slice/cartSlice";
+import { useDispatch } from "react-redux";
 
 const CategoryContent = ({ data }) => {
+  const dispatch = useDispatch()
+
   const navigate = useNavigate();
   const swiperItem = data?.map((el) => (
     <SwiperSlide key={el.id} className="category__card">
@@ -48,7 +52,7 @@ const CategoryContent = ({ data }) => {
             <FaPlus />
           </button>
         </div>
-        <button className="category__card-cart__content">
+        <button onClick={() => dispatch(addToCart(el))} className="category__card-cart__content">
           <IoCartOutline />
         </button>
       </div>

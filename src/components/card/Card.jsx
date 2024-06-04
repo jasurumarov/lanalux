@@ -3,6 +3,13 @@ import "../../scss/components/_card.scss"
 import Man from '../../assets/images/card-man.svg'
 import { useDispatch, useSelector } from 'react-redux'
 import { decrementCartQuantity, incrementCartQuantity, removeItemFromCart } from '../../context/slice/cartSlice'
+import YAndex1 from '../../assets/images/yandex-1.svg'
+import YAndex2 from '../../assets/images/yandex-2.svg'
+import Yandex3 from '../../assets/images/yandex-3-3-removebg-preview.png'
+import Yandex4 from '../../assets/images/yandex-4.svg'
+import Yandex5 from '../../assets/images/yandex-5.svg'
+import Yandex6 from '../../assets/images/yandex-6.svg'
+
 
 const Card = () => {
   const dispatch = useDispatch()
