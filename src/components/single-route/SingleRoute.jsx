@@ -7,7 +7,7 @@ import color4 from "../../assets/images/color-4.png";
 import { IoCartOutline } from "react-icons/io5";
 import { MdDeleteOutline } from "react-icons/md";
 
-const SingleRoute = () => {
+const SingleRoute = ({ data }) => {
   return (
     <div className="detail-section">
       <div className="container">
@@ -16,12 +16,12 @@ const SingleRoute = () => {
           <div className="detail__product">
             <div className="image__wrapper">
               <div className="product__img">
-                <img src={img} alt="" />
+                <img src={data?.images[0]} alt={data?.title} />
               </div>
               <div className="pro__images">
-                <img src={img} alt="" />
-                <img src={img} alt="" />
-                <img src={img} alt="" />
+                <img src={data?.images[0]} alt={data?.title} />
+                <img src={data?.images[0]} alt={data?.title} />
+                <img src={data?.images[0]} alt={data?.title} />
               </div>
             </div>
             <div className="product__about">
@@ -90,7 +90,7 @@ const SingleRoute = () => {
                 </div>
               </div>
               <div className="pro__price">
-                <h3>8000 $</h3>
+                <h3>{data?.price} $</h3>
                 <div className="cart__count">
                   <button>-</button>
                   <span>0</span>

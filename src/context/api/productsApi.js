@@ -17,6 +17,12 @@ export const productApi = api.injectEndpoints({
       }),
       providesTags: ["Products"],
     }),
+    getDetailProduct: build.query({
+      query: (id) => ({
+        url: `/products/${id}`,
+      }),
+      providesTags: ["Products"],
+    }),
     getCategoryItem: build.query({
       // 'https://dummyjson.com/products/category/smartphones'
       query: (path) => ({
@@ -60,4 +66,5 @@ export const {
   useUpdateProductMutation,
   useGetCategoryProductsQuery,
   useGetCategoryItemQuery,
+  useGetDetailProductQuery,
 } = productApi;

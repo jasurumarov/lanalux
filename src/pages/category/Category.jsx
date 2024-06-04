@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CategoryContent from "../../components/categoryContent/CategoryContent";
 import { useParams } from "react-router-dom";
 import { useGetCategoryItemQuery } from "../../context/api/productsApi";
 
 const Category = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const { path } = useParams();
-  console.log(path);
   const { data } = useGetCategoryItemQuery(path);
-  // 'https://dummyjson.com/products/categories'
   return (
     <main className="category-page">
       <CategoryContent data={data?.products} />
