@@ -8,10 +8,10 @@ const Category = () => {
     window.scrollTo(0, 0);
   }, []);
   const { path } = useParams();
-  const { data } = useGetCategoryItemQuery(path);
+  const { data, isLoading } = useGetCategoryItemQuery(path);
   return (
     <main className="category-page">
-      <CategoryContent data={data?.products} />
+      <CategoryContent data={data?.products} isLoading={isLoading}/>
     </main>
   );
 };
