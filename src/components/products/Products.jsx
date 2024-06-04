@@ -31,6 +31,15 @@ const Products = () => {
   let { data, isLoading } = useGetProductsQuery(`limit=${8 * seeMore}`);
   const dispatch = useDispatch();
 
+  const count = (id) => {
+    if (cart.some((item) => item.id === id)) {
+      const [result] = cart?.filter((item) => item.id == id);
+      return result.quantity;
+    } else {
+      return 0;
+    }
+  };
+
   let numOfLoadingItem = Array(8).fill("");
   let loadingItem = numOfLoadingItem.map((_, inx) => (
     <div key={inx} className="products__card-loading">
@@ -82,7 +91,7 @@ const Products = () => {
               <FaMinus />
             </button>
             <p>|</p>
-            <span>{element?.quantity || 0}</span>
+            <span>{count(el.id)}</span>
             <p>|</p>
             <button
               disabled={element?.quantity >= 10}
@@ -104,7 +113,7 @@ const Products = () => {
         ) : (
           <button
             onClick={() => (dispatch(addToCart(el)), setId(el.id))}
-            className="products__card-cart__content"
+            className="products__card-cart__content add__button"
           >
             <IoCartOutline />
           </button>

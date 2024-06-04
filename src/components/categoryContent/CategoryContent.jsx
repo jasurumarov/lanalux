@@ -27,8 +27,17 @@ const CategoryContent = ({ data }) => {
   const cart = useSelector((s) => s.cart.value);
   const [id, setId] = useState(null);
   const [element] = cart?.filter((el) => el.id === id);
-  const dispatch = useDispatch();
 
+  const count = (id) => {
+    if (cart.some((item) => item.id === id)) {
+      const [result] = cart?.filter((item) => item.id == id);
+      return result.quantity;
+    } else {
+      return 0;
+    }
+  };
+
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const swiperItem = data?.map((el) => (
     <SwiperSlide key={el.id} className="category__card">
@@ -58,7 +67,7 @@ const CategoryContent = ({ data }) => {
               <FaMinus />
             </button>
             <p>|</p>
-            <span>{element?.quantity || 0}</span>
+            <span>{count(el.id)}</span>
             <p>|</p>
             <button
               disabled={element?.quantity >= 10}
@@ -80,7 +89,7 @@ const CategoryContent = ({ data }) => {
         ) : (
           <button
             onClick={() => (dispatch(addToCart(el)), setId(el.id))}
-            className="category__card-cart__content"
+            className="category__card-cart__content add__button"
           >
             <IoCartOutline />
           </button>
