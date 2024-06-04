@@ -1,6 +1,5 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
-import reklama from "../../assets/images/ads.png";
 
 const Information = () => {
   return (
@@ -11,16 +10,16 @@ const Information = () => {
           <div className="information__sidebar">
             <ul>
               <li>
-                <NavLink to={`delivery`}>Доставка и оплата</NavLink>
+                <NavLink to={`#`}>Доставка и оплата</NavLink>
               </li>
               <li>
-                <NavLink to={`obmen`}>ОБМЕН И ВОЗВРАТ</NavLink>
+                <NavLink to={`#`}>ОБМЕН И ВОЗВРАТ</NavLink>
               </li>
               <li>
-                <NavLink to={`dimensions`}>РАЗМЕРЫ</NavLink>
+                <NavLink to={`#`}>РАЗМЕРЫ</NavLink>
               </li>
               <li>
-                <NavLink onTimeUpdate={`stock`}>Акции</NavLink>
+                <NavLink onTimeUpdate={`#`}>Акции</NavLink>
               </li>
             </ul>
           </div>
@@ -67,9 +66,6 @@ const Information = () => {
 
           {<Outlet />}
         </div>
-      </div>
-      <div className="ads">
-        <img src={reklama} alt="" />
       </div>
     </div>
   );

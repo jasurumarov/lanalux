@@ -7,7 +7,6 @@ import Video from "../../components/video";
 import Category from "../../components/catalog";
 import Advantages from "../../components/advantages/Advantages";
 import Information from "../../components/information";
-import Maps from "../../components/maps";
 
 const Home = () => {
   return (
@@ -18,7 +17,6 @@ const Home = () => {
       <Category />
       <Advantages />
       <Information />
-      <Maps />
     </main>
   );
 };
