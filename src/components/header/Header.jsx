@@ -12,6 +12,7 @@ import { GoSearch } from 'react-icons/go';
 import { HiArrowSmallDown } from 'react-icons/hi2';
 import cartSlice from '../../context/slice/cartSlice';
 import { useSelector } from 'react-redux';
+import { IoMdClose } from 'react-icons/io';
 
 const categories = [
   "Постельное бельё",
@@ -77,9 +78,18 @@ const Header = () => {
           </div>
           <div className="header__content-btns">
             <div className={`header__search ${search ? 'active' : ''}`}>
-              <button onClick={() => setSearch(p => !p)} className={`header__content-search ${search ? 'active' : ''} ${value ? 'value' : ''}`}>
-                <GoSearch />
-              </button>
+              {search ?
+                <button onClick={() => {
+                  setSearch(p => !p)
+                  setValue("")
+                  }} className={`header__content-search ${search ? 'active' : ''} ${value ? 'value' : ''}`}>
+                  <IoMdClose />
+                </button>
+                :
+                <button onClick={() => setSearch(p => !p)} className={`header__content-search ${search ? 'active' : ''} ${value ? 'value' : ''}`}>
+                  <GoSearch />
+                </button>
+              }
               <input value={value} onChange={e => setValue(e.target.value)} className={`${search ? 'active' : ''} ${value ? 'value' : ''}`} type="text" placeholder='Поиск...' />
               {value
                 ? <ul className={`search__value`}>

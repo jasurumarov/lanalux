@@ -269,6 +269,10 @@ header {
                     border-radius: 0 50% 0 0 !important;
                 }
 
+                button:disabled {
+                    background: #F9F7F4;
+                }
+
                 .search__value {
                     height: 300px;
                     overflow-x: auto;
