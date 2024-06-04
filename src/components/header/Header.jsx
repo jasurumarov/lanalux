@@ -34,7 +34,10 @@ const Header = () => {
 
   let { data: searchedData } = useGetSearchProductsQuery({ q: value })
   let searchItems = searchedData?.products?.map(el => (
-    <li onClick={() => navigate(`/product/${el.id}`)} key={el.id}><img src={el.images[0]} alt="" /> <p>{el.title}</p></li>
+    <li onClick={() => {
+      navigate(`/product/${el.id}`)
+      setValue("")
+    }} key={el.id}><img src={el.images[0]} alt="" /> <p>{el.title}</p></li>
   ))
 
   return (
