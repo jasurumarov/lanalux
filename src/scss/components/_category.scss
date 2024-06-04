@@ -23,33 +23,6 @@
       display: flex;
       flex-wrap: wrap;
       gap: 30px;
-        .category__cards {
-            display: flex;
-            flex-wrap: wrap;
-            padding: 100px 0;
-            padding-top: 0;
-            background: #f9f7f4;
-            gap: 30px;
-            position: relative;
-
-            .swiper-pagination {
-                position: absolute;
-                align-items: center !important;
-                bottom: 10px;
-                height: 40px;
-
-                .swiper-pagination-bullet {
-                    width: 13px;
-                    height: 13px;
-                }
-
-                .swiper-pagination-bullet-active {
-                    margin-bottom: -2px;
-                    width: 18px;
-                    height: 18px;
-                    background: #907555;
-                }
-            }
 
       .category__card {
         box-shadow: 0px 24px 44px 0px #0000000d;
@@ -138,16 +111,41 @@
           display: flex;
           gap: 37px;
 
-                    .category__card-cart__qty {
-                        border: 0.5px solid #AFAFAF;
-                        border-radius: 5px;
-                        display: flex;
-                        height: 38px;
-                        align-items: center;
-                        justify-content: center;
-                        width: 106px;
-                        gap: 8px;
-                        padding: 5px 0 6px 0;
+          .category__card-cart__qty {
+            border: 0.5px solid #afafaf;
+            border-radius: 5px;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 100px 0;
+            padding-top: 0;
+            background: #f9f7f4;
+            gap: 30px;
+            position: relative;
+
+            .swiper-pagination {
+                position: absolute;
+                align-items: center !important;
+                bottom: 10px;
+                height: 40px;
+
+                .swiper-pagination-bullet {
+                    width: 13px;
+                    height: 13px;
+                }
+
+                .swiper-pagination-bullet-active {
+                    margin-bottom: -2px;
+                    width: 18px;
+                    height: 18px;
+                    background: #907555;
+                }
+            }
+            height: 38px;
+            align-items: center;
+            justify-content: center;
+            width: 106px;
+            gap: 8px;
+            padding: 5px 0 6px 0;
 
             button {
               cursor: pointer;
@@ -196,12 +194,10 @@
               padding-top: 2px;
             }
 
-                        &:active {
-                            scale: .97;
-                        }
-                    }
-                }
+            &:active {
+              scale: 0.97;
             }
+          }
         }
 
     }
@@ -257,6 +253,7 @@
             }
 
         }
+      }
     }
-}
+  }
 }
