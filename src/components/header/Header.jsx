@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { HiChevronDown, HiOutlineMenuAlt2, HiOutlineShoppingBag } from "react-icons/hi";
 import { Link, useNavigate } from 'react-router-dom';
 import { useGetCategoryProductsQuery } from "../../context/api/productsApi";
+import { useGetSearchProductsQuery } from '../../context/api/productsApi'
 
 // Images
 import SiteLogo from '../../assets/icons/site-logo.svg'
@@ -24,11 +25,17 @@ const categories = [
 ];
 
 const Header = () => {
+  const [value, setValue] = useState("")
   const [catalog, setCatalog] = useState(false)
   const [search, setSearch] = useState(false)
   const { data } = useGetCategoryProductsQuery();
   const navigate = useNavigate()
   let cart = useSelector(s => s.cart.value)
+
+  let { data: searchedData } = useGetSearchProductsQuery({ q: value })
+  let searchItems = searchedData?.products?.map(el => (
+    <li onClick={() => navigate(`/product/${el.id}`)} key={el.id}><img src={el.images[0]} alt="" /> <p>{el.title}</p></li>
+  ))
 
   return (
     <header>
@@ -67,22 +74,27 @@ const Header = () => {
           </div>
           <div className="header__content-btns">
             <div className="header__search">
-              <button onClick={() => setSearch(p => !p)} className={`header__content-search ${search ? 'active' : ''}`}>
-              <GoSearch />
+              <button onClick={() => setSearch(p => !p)} className={`header__content-search ${search ? 'active' : ''} ${value ? 'value' : ''}`}>
+                <GoSearch />
+              </button>
+              <input value={value} onChange={e => setValue(e.target.value)} className={`${search ? 'active' : ''} ${value ? 'value' : ''}`} type="text" placeholder='Поиск...' />
+              {value
+                ? <ul className={`search__value`}>
+                  {searchItems}
+                </ul>
+                : <></>}
+            </div>
+            <button onClick={() => navigate('/cart')} className='header__content-cart'>
+              <HiOutlineShoppingBag />
+              <sup>{cart.length}</sup>
             </button>
-            <input className={search ? 'active' : ''} type="text" placeholder='Поиск...' />
+            <button className='header__content-lang'>
+              RU
+              <img src={RuIcon} alt="russia flag" />
+              <HiChevronDown />
+            </button>
           </div>
-          <button onClick={() => navigate('/cart')} className='header__content-cart'>
-            <HiOutlineShoppingBag />
-            <sup>{cart.length}</sup>
-          </button>
-          <button className='header__content-lang'>
-            RU
-            <img src={RuIcon} alt="russia flag" />
-            <HiChevronDown />
-          </button>
-      </div>
-    </nav>
+        </nav>
       </div >
     </header >
   )
