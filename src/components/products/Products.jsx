@@ -15,7 +15,6 @@ import {
 
 const Products = () => {
   const { pathname } = useLocation();
-  console.log(pathname);
   const navigate = useNavigate();
   const [seeMore, setSeeMore] = useState(1);
   const [sortAsc, setSortAsc] = useState(true);

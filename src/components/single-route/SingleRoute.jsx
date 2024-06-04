@@ -6,8 +6,19 @@ import color3 from "../../assets/images/color-3.png";
 import color4 from "../../assets/images/color-4.png";
 import { IoCartOutline } from "react-icons/io5";
 import { MdDeleteOutline } from "react-icons/md";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addToCart,
+  decrementCartQuantity,
+  incrementCartQuantity,
+  removeItemFromCart,
+} from "../../context/slice/cartSlice";
 
 const SingleRoute = ({ data }) => {
+  const cart = useSelector((s) => s.cart.value);
+  const dispatch = useDispatch();
+  const [product] = cart?.filter((el) => el.id === data?.id);
+  console.log(product);
   return (
     <div className="detail-section">
       <div className="container">
@@ -91,16 +102,43 @@ const SingleRoute = ({ data }) => {
               </div>
               <div className="pro__price">
                 <h3>{data?.price} $</h3>
-                <div className="cart__count">
-                  <button>-</button>
-                  <span>0</span>
-                  <button>+</button>
-                </div>
-                <button className="cart__btn">
-                  <IoCartOutline />
-                  {/* Logika yozish kerak */}
-                  {/* <MdDeleteOutline /> */}
-                </button>
+                {cart?.some((el) => el.id == data.id) ? (
+                  <div className="cart__count">
+                    <button
+                      disabled={product?.quantity <= 1}
+                      onClick={() => dispatch(decrementCartQuantity(data))}
+                    >
+                      -
+                    </button>
+                    <span>{product?.quantity || 0}</span>
+                    <button
+                      disabled={product?.quantity >= 10}
+                      onClick={() => dispatch(incrementCartQuantity(data))}
+                    >
+                      +
+                    </button>
+                  </div>
+                ) : (
+                  <></>
+                )}
+
+                {cart?.some((el) => el.id === data.id) ? (
+                  <button
+                    onClick={() => dispatch(removeItemFromCart(data))}
+                    className="cart__btn"
+                  >
+                    <MdDeleteOutline />
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => dispatch(addToCart(data))}
+                    className="cart__btn"
+                  >
+                    <IoCartOutline />
+
+                    {/* <MdDeleteOutline /> */}
+                  </button>
+                )}
               </div>
             </div>
           </div>
