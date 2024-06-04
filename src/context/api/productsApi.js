@@ -1,47 +1,55 @@
-import { api } from './api'
+import { api } from "./api";
 
 export const productApi = api.injectEndpoints({
   endpoints: (build) => ({
     // Get request
     getProducts: build.query({
-      query: (params) => ({ 
-        url: '/products', 
-        params 
+      query: (params) => ({
+        url: "/products",
+        params,
       }),
-      providesTags:["Products"]
+      providesTags: ["Products"],
+    }),
+    getCategoryProducts: build.query({
+      query: (params) => ({
+        url: "/products/category-list",
+        params,
+      }),
+      providesTags: ["Products"],
     }),
     // Delete
     deleteProducts: build.mutation({
       query: (id) => ({
         url: `/products/${id}`,
-        method: "DELETE"
+        method: "DELETE",
       }),
-      invalidatesTags:["Products"]
+      invalidatesTags: ["Products"],
     }),
     // Post
     postProducts: build.mutation({
-      query: (body)=>({
+      query: (body) => ({
         url: "/products",
         method: "POST",
-        body 
+        body,
       }),
-      invalidatesTags: ["Products"]
+      invalidatesTags: ["Products"],
     }),
     // Put
     updateProduct: build.mutation({
-      query: ({id, body}) => ({
+      query: ({ id, body }) => ({
         url: `/products/${id}`,
         method: "PUT",
-        body
+        body,
       }),
-      invalidatesTags: ["Products"]
-    })
+      invalidatesTags: ["Products"],
+    }),
   }),
-})
+});
 
 export const {
   useGetProductsQuery,
   useDeleteProductsMutation,
   usePostProductsMutation,
-  useUpdateProductMutation
-} = productApi
+  useUpdateProductMutation,
+  useGetCategoryProductsQuery,
+} = productApi;
