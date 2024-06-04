@@ -2,11 +2,16 @@ import React, { useState } from "react";
 import { useGetProductsQuery } from "../../context/api/productsApi";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { addToCart } from "../../context/slice/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addToCart,
+  decrementCartQuantity,
+  incrementCartQuantity,
+  removeItemFromCart,
+} from "../../context/slice/cartSlice";
 
 // Images
-import { MdOutlineCurrencyRuble } from "react-icons/md";
+import { MdDeleteOutline, MdOutlineCurrencyRuble } from "react-icons/md";
 import { BiRuble } from "react-icons/bi";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { IoCartOutline } from "react-icons/io5";
@@ -16,6 +21,9 @@ import {
 } from "react-icons/lia";
 
 const Products = () => {
+  const cart = useSelector((s) => s.cart.value);
+  const [id, setId] = useState(null);
+  const [element] = cart?.filter((el) => el.id === id);
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const [seeMore, setSeeMore] = useState(1);
@@ -65,23 +73,42 @@ const Products = () => {
         {el.price} <BiRuble />
       </h3>
       <div className="products__card-cart">
-        <div className="products__card-cart__qty">
-          <button>
-            <FaMinus />
+        {cart?.some((item) => item.id == el.id) ? (
+          <div className="products__card-cart__qty">
+            <button
+              disabled={element?.quantity <= 0}
+              onClick={() => dispatch(decrementCartQuantity(el))}
+            >
+              <FaMinus />
+            </button>
+            <p>|</p>
+            <span>{element?.quantity || 0}</span>
+            <p>|</p>
+            <button
+              disabled={element?.quantity >= 10}
+              onClick={() => dispatch(incrementCartQuantity(el))}
+            >
+              <FaPlus />
+            </button>
+          </div>
+        ) : (
+          <></>
+        )}
+        {cart?.some((item) => item.id == el?.id) ? (
+          <button
+            onClick={() => dispatch(removeItemFromCart(el))}
+            className="products__card-cart__content"
+          >
+            <MdDeleteOutline />
           </button>
-          <p>|</p>
-          <span>1</span>
-          <p>|</p>
-          <button>
-            <FaPlus />
+        ) : (
+          <button
+            onClick={() => (dispatch(addToCart(el)), setId(el.id))}
+            className="products__card-cart__content"
+          >
+            <IoCartOutline />
           </button>
-        </div>
-        <button
-          onClick={() => dispatch(addToCart(el))}
-          className="products__card-cart__content"
-        >
-          <IoCartOutline />
-        </button>
+        )}
       </div>
     </div>
   ));
