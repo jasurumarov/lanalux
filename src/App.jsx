@@ -28,6 +28,7 @@ function App() {
         <Route path="/category/:path" element={<Category />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/about/:id" element={<About />} />
+
         <Route path="/card" element={<Card />} />
         <Route path="/product/:id" element={<Detail />} />
       </Routes>
