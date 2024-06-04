@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -9,17 +9,25 @@ import "swiper/css/pagination";
 // Images
 import CardImg from "../../assets/images/card-img.png";
 import DiscountImg from "../../assets/icons/discount.svg";
-import { MdOutlineCurrencyRuble } from "react-icons/md";
+import { MdDeleteOutline, MdOutlineCurrencyRuble } from "react-icons/md";
 import { IoCartOutline } from "react-icons/io5";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { BiRuble } from "react-icons/bi";
 import Products from "../products/Products";
 import { useNavigate } from "react-router-dom";
-import { addToCart } from "../../context/slice/cartSlice";
-import { useDispatch } from "react-redux";
+import {
+  addToCart,
+  decrementCartQuantity,
+  incrementCartQuantity,
+  removeItemFromCart,
+} from "../../context/slice/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const CategoryContent = ({ data }) => {
-  const dispatch = useDispatch()
+  const cart = useSelector((s) => s.cart.value);
+  const [id, setId] = useState(null);
+  const [element] = cart?.filter((el) => el.id === id);
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
   const swiperItem = data?.map((el) => (
@@ -41,20 +49,42 @@ const CategoryContent = ({ data }) => {
         {Math.round(el.price)} <BiRuble />
       </h3>
       <div className="category__card-cart">
-        <div className="category__card-cart__qty">
-          <button>
-            <FaMinus />
+        {cart?.some((item) => item.id == el.id) ? (
+          <div className="category__card-cart__qty">
+            <button
+              disabled={element?.quantity <= 0}
+              onClick={() => dispatch(decrementCartQuantity(el))}
+            >
+              <FaMinus />
+            </button>
+            <p>|</p>
+            <span>{element?.quantity || 0}</span>
+            <p>|</p>
+            <button
+              disabled={element?.quantity >= 10}
+              onClick={() => dispatch(incrementCartQuantity(el))}
+            >
+              <FaPlus />
+            </button>
+          </div>
+        ) : (
+          <></>
+        )}
+        {cart?.some((item) => item.id == el?.id) ? (
+          <button
+            onClick={() => dispatch(removeItemFromCart(el))}
+            className="category__card-cart__content"
+          >
+            <MdDeleteOutline />
           </button>
-          <p>|</p>
-          <span>1</span>
-          <p>|</p>
-          <button>
-            <FaPlus />
+        ) : (
+          <button
+            onClick={() => (dispatch(addToCart(el)), setId(el.id))}
+            className="category__card-cart__content"
+          >
+            <IoCartOutline />
           </button>
-        </div>
-        <button onClick={() => dispatch(addToCart(el))} className="category__card-cart__content">
-          <IoCartOutline />
-        </button>
+        )}
       </div>
     </SwiperSlide>
   ));
