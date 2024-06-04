@@ -191,6 +191,7 @@ header {
             align-items: center;
             gap: 22px;
 
+
             .header__content-search,
             .header__content-cart {
                 position: relative;
@@ -201,6 +202,8 @@ header {
                 justify-content: center;
                 background: #F0EBE7;
                 border-radius: 50%;
+                transition: .2s;
+
                 cursor: pointer;
 
                 svg {
@@ -225,6 +228,37 @@ header {
                     line-height: 10px;
                     text-align: left;
 
+                }
+            }
+
+            .header__search {
+                position: relative;
+
+                input {
+                    width: 48px;
+                    height: 48px;
+                    background: #F9F7F4;
+                    border-radius: 50%;
+                    border: 0;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    z-index: -1;
+                    transition: .2s;
+                }
+
+                input.active {
+                    width: 280px;
+                    z-index: 1;
+                    right: 100%;
+                    z-index: 1;
+                    padding: 0 20px;
+                    border-radius: 50px 0 0 50px;
+                }
+
+                .header__content-search.active {
+                    border-radius: 0 50px 50px 0;
+                    background: #F9F7F4;
                 }
             }
 

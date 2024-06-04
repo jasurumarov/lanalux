@@ -25,6 +25,7 @@ const categories = [
 
 const Header = () => {
   const [catalog, setCatalog] = useState(false)
+  const [search, setSearch] = useState(false)
   const { data } = useGetCategoryProductsQuery();
   const navigate = useNavigate()
   let cart = useSelector(s => s.cart.value)
@@ -65,20 +66,23 @@ const Header = () => {
             <Link to={'tel: +7 495 508-76-45'}>заказать звонок</Link>
           </div>
           <div className="header__content-btns">
-            <button className='header__content-search'>
+            <div className="header__search">
+              <button onClick={() => setSearch(p => !p)} className={`header__content-search ${search ? 'active' : ''}`}>
               <GoSearch />
             </button>
-            <button onClick={() => navigate('/cart')} className='header__content-cart'>
-              <HiOutlineShoppingBag />
-              <sup>{cart.length}</sup>
-            </button>
-            <button className='header__content-lang'>
-              RU
-              <img src={RuIcon} alt="russia flag" />
-              <HiChevronDown />
-            </button>
+            <input className={search ? 'active' : ''} type="text" placeholder='Поиск...' />
           </div>
-        </nav>
+          <button onClick={() => navigate('/cart')} className='header__content-cart'>
+            <HiOutlineShoppingBag />
+            <sup>{cart.length}</sup>
+          </button>
+          <button className='header__content-lang'>
+            RU
+            <img src={RuIcon} alt="russia flag" />
+            <HiChevronDown />
+          </button>
+      </div>
+    </nav>
       </div >
     </header >
   )
