@@ -23,6 +23,27 @@
       display: flex;
       flex-wrap: wrap;
       gap: 30px;
+      padding: 100px 0;
+      padding-top: 0;
+
+      .swiper-pagination {
+        position: absolute;
+        align-items: center !important;
+        bottom: 10px;
+        height: 40px;
+
+        .swiper-pagination-bullet {
+          width: 13px;
+          height: 13px;
+        }
+
+        .swiper-pagination-bullet-active {
+          margin-bottom: -2px;
+          width: 18px;
+          height: 18px;
+          background: #907555;
+        }
+      }
 
       .category__card {
         box-shadow: 0px 24px 44px 0px #0000000d;
@@ -146,6 +167,7 @@
                 background: #907555;
               }
             }
+
             height: 38px;
             align-items: center;
             justify-content: center;
@@ -219,6 +241,7 @@
                 line-height: 18px;
                 padding-bottom: 12px;
                 width: 100%;
+
                 border-bottom: 1px solid #ccc7c11a;
               }
             }
@@ -226,30 +249,59 @@
         }
       }
     }
+    border-bottom: 1px solid #ccc7c11a;
+  }
 
-    @media (max-width: 440px) {
-      .category-section {
-        &__content {
-          h1 {
-            font-size: 32px;
-            font-weight: 400;
-            line-height: 51px;
-            letter-spacing: 0.05em;
-          }
+  @media (max-width: 440px) {
+    .category-section {
+      &__content {
+        h1 {
+          font-size: 32px;
+          font-weight: 400;
+          line-height: 51px;
+          letter-spacing: 0.05em;
+        }
 
-          .category__filters {
-            .category__filters-top {
-              .category__filters-top-filter {
-                gap: 15px;
-              }
+        .category__filters {
+          .category__filters-top {
+            .category__filters-top-filter {
+              gap: 15px;
             }
+          }
+        }
+      }
+    }
+  }
 
-            .category__filters-body {
-              .category__filters-body__filter {
-                h4 {
-                  font-size: 18px;
-                }
-              }
+  .category__filters-body {
+    .category__filters-body__filter {
+      h4 {
+        font-size: 18px;
+      }
+    }
+  }
+}
+@media (max-width: 440px) {
+  .category-section {
+    &__content {
+      h1 {
+        font-size: 32px;
+        font-weight: 400;
+        line-height: 51px;
+        letter-spacing: 0.05em;
+      }
+
+      .category__filters {
+        .category__filters-top {
+          .category__filters-top-filter {
+            gap: 15px;
+          }
+        }
+
+        .category__filters-body {
+          .category__filters-body__filter {
+            h4 {
+              font-size: 18px;
             }
           }
         }
