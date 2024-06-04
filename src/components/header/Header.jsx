@@ -9,6 +9,8 @@ import UsIcon from '../../assets/icons/us.svg'
 import RuIcon from '../../assets/icons/ru.svg'
 import { GoSearch } from 'react-icons/go';
 import { HiArrowSmallDown } from 'react-icons/hi2';
+import cartSlice from '../../context/slice/cartSlice';
+import { useSelector } from 'react-redux';
 
 const categories = [
   "Постельное бельё",
@@ -25,6 +27,7 @@ const Header = () => {
   const [catalog, setCatalog] = useState(false)
   const { data } = useGetCategoryProductsQuery();
   const navigate = useNavigate()
+  let cart = useSelector(s => s.cart.value)
 
   return (
     <header>
@@ -46,36 +49,36 @@ const Header = () => {
                       <div>
                         <ul>
                           {data?.slice(0, 5)?.map(el => (
-                            <Link key={el} to={`/category/${el}`} onClick={() => setCatalog(p => !p)}> { el }</Link>
+                            <Link key={el} to={`/category/${el}`} onClick={() => setCatalog(p => !p)}> {el}</Link>
                           ))}
-                      </ul>
-                    </div>
+                        </ul>
+                      </div>
                     </li>
                   ))}
-              </ul>
+                </ul>
               </div>
             )}
-      </div>
-      <h3>Одежда и постель из натуральной шерсти</h3>
-      <div className="header__content-contact">
-        <p>+7 (495) 508-76-45</p>
-        <Link to={'tel: +7 495 508-76-45'}>заказать звонок</Link>
-      </div>
-      <div className="header__content-btns">
-        <button className='header__content-search'>
-          <GoSearch />
-        </button>
-        <button onClick={() => navigate('/cart')} className='header__content-cart'>
-          <HiOutlineShoppingBag />
-          <sup>10</sup>
-        </button>
-        <button className='header__content-lang'>
-          RU
-          <img src={RuIcon} alt="russia flag" />
-          <HiChevronDown />
-        </button>
-      </div>
-    </nav>
+          </div>
+          <h3>Одежда и постель из натуральной шерсти</h3>
+          <div className="header__content-contact">
+            <p>+7 (495) 508-76-45</p>
+            <Link to={'tel: +7 495 508-76-45'}>заказать звонок</Link>
+          </div>
+          <div className="header__content-btns">
+            <button className='header__content-search'>
+              <GoSearch />
+            </button>
+            <button onClick={() => navigate('/cart')} className='header__content-cart'>
+              <HiOutlineShoppingBag />
+              <sup>{cart.length}</sup>
+            </button>
+            <button className='header__content-lang'>
+              RU
+              <img src={RuIcon} alt="russia flag" />
+              <HiChevronDown />
+            </button>
+          </div>
+        </nav>
       </div >
     </header >
   )
