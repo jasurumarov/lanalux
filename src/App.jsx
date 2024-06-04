@@ -23,7 +23,7 @@ function App() {
         <Route path="/category" element={<Category />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/about/:id" element={<About />} />
-        <Route path="/card" element={<Card />} />
+        <Route path="/cart" element={<Card />} />
       </Routes>
       <Footer />
     </>

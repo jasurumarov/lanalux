@@ -22,7 +22,30 @@
         .category__cards {
             display: flex;
             flex-wrap: wrap;
+            padding: 100px 0;
+            padding-top: 0;
+            background: #f9f7f4;
             gap: 30px;
+            position: relative;
+
+            .swiper-pagination {
+                position: absolute;
+                align-items: center !important;
+                bottom: 10px;
+                height: 40px;
+
+                .swiper-pagination-bullet {
+                    width: 13px;
+                    height: 13px;
+                }
+
+                .swiper-pagination-bullet-active {
+                    margin-bottom: -2px;
+                    width: 18px;
+                    height: 18px;
+                    background: #907555;
+                }
+            }
 
             .category__card {
                 box-shadow: 0px 24px 44px 0px #0000000D;
@@ -172,6 +195,60 @@
                     }
                 }
             }
+        }
+
+    }
+}
+
+@media (max-width: 725px) {
+    .category-section {
+        &__content {
+            .category__filters {
+                .category__filters-top {
+
+                    h2 {
+                        font-size: 18px;
+                        font-weight: 400;
+                        line-height: 18px;
+                        padding-bottom: 12px;
+                        width: 100%;
+                        border-bottom: 1px solid #CCC7C11A;
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 440px) {
+
+    .category-section {
+        &__content {
+            h1 {
+                font-size: 32px;
+                font-weight: 400;
+                line-height: 51px;
+                letter-spacing: 0.05em;
+
+            }
+
+            .category__filters {
+                .category__filters-top {
+                    .category__filters-top-filter {
+                        gap: 15px;
+                    }
+                }
+
+                .category__filters-body {
+                    .category__filters-body__filter {
+                        h4 {
+                            font-size: 18px;
+                        }
+                    }
+                }
+            }
+
         }
     }
 }

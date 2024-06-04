@@ -15,6 +15,7 @@ header {
             background: #F0EBE7;
             border-radius: 3px;
             cursor: pointer;
+            position: relative;
 
             button {
                 display: flex;
@@ -46,6 +47,107 @@ header {
 
             }
 
+            .header__catalog-list {
+                background: #F9F7F4;
+                box-shadow: 0px 24px 44px 0px #0000000D;
+                position: absolute;
+                z-index: 10;
+                border-radius: 3px;
+                padding: 4px;
+                top: 110%;
+                left: 0;
+
+                .header__catalog-list__content {
+                    border-radius: 5px;
+                    border: 1px solid #F2ECE4;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
+                    padding: 22px 20px;
+                    z-index: 10;
+                    cursor: default !important;
+
+                    .header__catalog-list__content-item {
+                        cursor: pointer;
+                        width: 260px;
+                        padding: 20px 16px;
+                        box-shadow: 0px 5px 19px 0px #00000008;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        font-family: sans-serif;
+                        font-size: 15px;
+                        font-weight: 400;
+                        line-height: 21px;
+                        letter-spacing: 0.05em;
+                        position: relative;
+                        z-index: 10;
+
+
+                        svg {
+                            transition: .1s;
+                            font-size: 18px;
+                            color: #CCC7C1;
+                        }
+
+                        &:hover {
+                            svg {
+                                rotate: -90deg;
+                                color: #313131;
+                            }
+
+                            div {
+                                opacity: 1;
+
+                            }
+                        }
+
+                        div {
+                            opacity: 0;
+                            box-shadow: 0px 24px 44px 0px #0000000D;
+                            background: #F9F7F4;
+                            position: absolute;
+                            z-index: -10 !important;
+                            border-radius: 3px;
+                            padding: 4px;
+                            left: 112%;
+                            top: 0;
+                            transition: .3s;
+
+                            ul {
+                                border-radius: 5px;
+                                border: 1px solid #F2ECE4;
+                                display: flex;
+                                flex-direction: column;
+                                gap: 15px;
+                                padding: 12px 18px;
+                                cursor: default !important;
+
+                                a {
+                                    cursor: pointer;
+                                    width: 180px;
+                                    border-bottom: 1px solid #CCC7C1;
+                                    font-family: sans-serif;
+                                    font-size: 13px;
+                                    font-weight: 400;
+                                    line-height: 29px;
+                                    letter-spacing: 0.05em;
+                                    // color: #CCC7C1;
+                                    transition: .1s;
+                                    color: #313131;
+
+                                    &:hover {
+                                        border-bottom: 1px solid #313131;
+                                    }
+
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
+
         }
 
 
@@ -54,6 +156,8 @@ header {
             font-size: 26px;
             font-weight: 600;
             line-height: 19px;
+            border: 1px solid #F2ECE4;
+
             color: #714615;
 
         }
@@ -213,6 +317,7 @@ header {
         nav {
             .header__content-category {
                 margin-right: -12px;
+
                 button {
                     padding: 8px 14px;
 
@@ -221,6 +326,7 @@ header {
                     }
                 }
             }
+
             .header__content-btns {
                 gap: 14px;
             }
