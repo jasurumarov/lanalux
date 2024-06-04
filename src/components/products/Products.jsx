@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useGetProductsQuery } from "../../context/api/productsApi";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 // Images
 import { MdOutlineCurrencyRuble } from "react-icons/md";
@@ -13,6 +14,8 @@ import {
 } from "react-icons/lia";
 
 const Products = () => {
+  const { pathname } = useLocation();
+  console.log(pathname);
   const navigate = useNavigate();
   const [seeMore, setSeeMore] = useState(1);
   const [sortAsc, setSortAsc] = useState(true);
@@ -78,104 +81,109 @@ const Products = () => {
     </div>
   ));
   return (
-    <section className="products-section">
+    <section style={{ marginTop: "30px" }} className="products-section">
       <div className="container">
-        <div className="category__filters">
-          <div className="category__filters-top">
-            <h2>фильтр по параметрам</h2>
-            <div className="category__filters-top-filter">
-              <div className="category__filters-top-filter__seemore">
-                <p>Показать:</p>
-                <button
-                  onClick={() => setSeeMore(1)}
-                  className={seeMore === 1 ? "active" : ""}
-                >
-                  8
-                </button>
-                <button
-                  onClick={() => setSeeMore(3)}
-                  className={seeMore === 3 ? "active" : ""}
-                >
-                  / 24
-                </button>
-                <button
-                  onClick={() => setSeeMore(5)}
-                  className={seeMore === 5 ? "active" : ""}
-                >
-                  / 40
-                </button>
+        {pathname.includes("product") ? (
+          <></>
+        ) : (
+          <div className="category__filters">
+            <div className="category__filters-top">
+              <h2>фильтр по параметрам</h2>
+              <div className="category__filters-top-filter">
+                <div className="category__filters-top-filter__seemore">
+                  <p>Показать:</p>
+                  <button
+                    onClick={() => setSeeMore(1)}
+                    className={seeMore === 1 ? "active" : ""}
+                  >
+                    8
+                  </button>
+                  <button
+                    onClick={() => setSeeMore(3)}
+                    className={seeMore === 3 ? "active" : ""}
+                  >
+                    / 24
+                  </button>
+                  <button
+                    onClick={() => setSeeMore(5)}
+                    className={seeMore === 5 ? "active" : ""}
+                  >
+                    / 40
+                  </button>
+                </div>
+                <div className="category__filters-top-filter__sena">
+                  <p>По цене:</p>
+                  <button
+                    onClick={() => setSortAsc(true)}
+                    className={sortAsc ? "active" : ""}
+                  >
+                    <LiaSortAmountDownAltSolid />
+                  </button>
+                  <button
+                    onClick={() => setSortAsc(false)}
+                    className={!sortAsc ? "active" : ""}
+                  >
+                    <LiaSortAmountDownSolid />
+                  </button>
+                </div>
               </div>
-              <div className="category__filters-top-filter__sena">
-                <p>По цене:</p>
-                <button
-                  onClick={() => setSortAsc(true)}
-                  className={sortAsc ? "active" : ""}
-                >
-                  <LiaSortAmountDownAltSolid />
-                </button>
-                <button
-                  onClick={() => setSortAsc(false)}
-                  className={!sortAsc ? "active" : ""}
-                >
-                  <LiaSortAmountDownSolid />
-                </button>
+            </div>
+            <div className="category__filters-body">
+              <div className="category__filters-body__filter">
+                <h4>Выберите размер</h4>
+                <article>
+                  <button disabled>
+                    <input disabled type="checkbox" />
+                    <p>М(46)</p>
+                  </button>
+                  <button disabled>
+                    <input disabled type="checkbox" />
+                    <p>L(48)</p>
+                  </button>
+                  <button>
+                    <input disabled defaultChecked type="checkbox" />
+                    <p>XL(50)</p>
+                  </button>
+                  <button disabled>
+                    <input disabled type="checkbox" />
+                    <p>XXL(52)</p>
+                  </button>
+                  <button disabled>
+                    <input disabled type="checkbox" />
+                    <p>XXXL(54)</p>
+                  </button>
+                </article>
+              </div>
+              <div className="category__filters-body__filter category__filters-body__byRost">
+                <h4>Выберите РОСТ</h4>
+                <article>
+                  <button disabled>
+                    <input disabled type="checkbox" />
+                    <p>170</p>
+                  </button>
+                  <button disabled>
+                    <input disabled type="checkbox" />
+                    <p>176</p>
+                  </button>
+                  <button>
+                    <input disabled defaultChecked type="checkbox" />
+                    <p>182</p>
+                  </button>
+                  <button disabled>
+                    <input disabled type="checkbox" />
+                    <p>188</p>
+                  </button>
+                </article>
+              </div>
+              <div className="category__filters-seeMore">
+                <div></div>
+                <p>развернуть все параметры</p>
+                <div></div>
               </div>
             </div>
           </div>
-          <div className="category__filters-body">
-            <div className="category__filters-body__filter">
-              <h4>Выберите размер</h4>
-              <article>
-                <button disabled>
-                  <input disabled type="checkbox" />
-                  <p>М(46)</p>
-                </button>
-                <button disabled>
-                  <input disabled type="checkbox" />
-                  <p>L(48)</p>
-                </button>
-                <button>
-                  <input disabled defaultChecked type="checkbox" />
-                  <p>XL(50)</p>
-                </button>
-                <button disabled>
-                  <input disabled type="checkbox" />
-                  <p>XXL(52)</p>
-                </button>
-                <button disabled>
-                  <input disabled type="checkbox" />
-                  <p>XXXL(54)</p>
-                </button>
-              </article>
-            </div>
-            <div className="category__filters-body__filter category__filters-body__byRost">
-              <h4>Выберите РОСТ</h4>
-              <article>
-                <button disabled>
-                  <input disabled type="checkbox" />
-                  <p>170</p>
-                </button>
-                <button disabled>
-                  <input disabled type="checkbox" />
-                  <p>176</p>
-                </button>
-                <button>
-                  <input disabled defaultChecked type="checkbox" />
-                  <p>182</p>
-                </button>
-                <button disabled>
-                  <input disabled type="checkbox" />
-                  <p>188</p>
-                </button>
-              </article>
-            </div>
-            <div className="category__filters-seeMore">
-              <div></div>
-              <p>развернуть все параметры</p>
-              <div></div>
-            </div>
-          </div>
-        </div>
+        )}
+
         <div className="products-section__content">
           {isLoading ? loadingItem : product}
         </div>

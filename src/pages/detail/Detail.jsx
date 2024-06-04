@@ -3,6 +3,7 @@ import SingleRoute from "../../components/single-route/SingleRoute";
 import Information from "../../components/information";
 import { useGetDetailProductQuery } from "../../context/api/productsApi";
 import { useParams } from "react-router-dom";
+import Products from "../../components/products/Products";
 
 const Detail = () => {
   useEffect(() => {
@@ -14,6 +15,7 @@ const Detail = () => {
     <>
       <SingleRoute data={data} />
       <Information />
+      <Products />
     </>
   );
 };
