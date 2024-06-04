@@ -80,6 +80,12 @@
           letter-spacing: 0.05em;
           max-width: 163px;
           margin-bottom: 14px;
+          height: 34px;
+          margin-bottom: 14px;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 1;
+          overflow: hidden;
         }
 
         .category__card-oldPrice {
