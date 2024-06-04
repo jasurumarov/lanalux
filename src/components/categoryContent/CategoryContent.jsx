@@ -23,10 +23,24 @@ import {
 } from "../../context/slice/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-const CategoryContent = ({ data }) => {
+const CategoryContent = ({ data, isLoading }) => {
   const cart = useSelector((s) => s.cart.value);
   const [id, setId] = useState(null);
   const [element] = cart?.filter((el) => el.id === id);
+
+  let numOfLoadingItem = Array(4).fill("");
+  let loadingItem = numOfLoadingItem.map((_, inx) => (
+    <div key={inx} className="products__card-loading">
+      <div className="products__card-img"></div>
+      <p className="products__img-title"></p>
+      <div className="products__card-oldPrice"></div>
+      <h3></h3>
+      <div className="products__card-cart">
+        <div className="products__card-cart__qty"></div>
+        <button className="products__card-cart__content"></button>
+      </div>
+    </div>
+  ));
 
   const count = (id) => {
     if (cart.some((item) => item.id === id)) {
@@ -138,7 +152,7 @@ const CategoryContent = ({ data }) => {
               }}
               modules={[Pagination]}
             >
-              {swiperItem}
+              {isLoading ? loadingItem : swiperItem}
             </Swiper>
           </div>
         </div>
